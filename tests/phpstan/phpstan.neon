@@ -1,0 +1,22 @@
+parameters:
+    level: 9
+    phpVersion: 80400
+    bootstrapFiles:
+        - ../../vendor/autoload.php
+    fileExtensions:
+        - phpt
+
+    paths:
+      - ../../app
+      - ../../tests/unit
+
+    parallel:
+        processTimeout: 30.0
+    exceptions:
+      check:
+          tooWideThrowType: true
+          missingCheckedExceptionInThrows: true
+      uncheckedExceptionRegexes:
+#          - '#^Nette\\DI\\MissingServiceException$#'
+includes:
+  - phpstan-baseline.neon

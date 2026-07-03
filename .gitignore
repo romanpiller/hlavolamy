@@ -1,0 +1,10 @@
+composer.lock
+
+.git/
+.idea/
+vendor/
+
+/tests/cover.html
+/tests/*/output/
+/tests/*/*/output/
+/.junie/

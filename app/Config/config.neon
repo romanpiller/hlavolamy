@@ -1,0 +1,16 @@
+parameters:
+
+services:
+    - Console\Application
+
+# commands
+    - Console\Commands\DemoCommand
+
+# facades
+    - Console\Facades\DemoFacade
+
+extensions:
+  demo: Demo\Config\Extension
+
+demo:
+  defaultName: 'console defaultname'
