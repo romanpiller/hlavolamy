@@ -23,7 +23,7 @@
         "php": "^8.2",
         "nette/di": "^3.2",
         "romanpiller/sudoku":"^1.0.1",
-        "symfony/console": "^8.1"
+        "symfony/console": "^7.4"
     },
     "require-dev": {
         "nette/tester": "^2.4.3",
