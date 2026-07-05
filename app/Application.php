@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Console;
+namespace RomanPiller\Console;
 
-use Console\Commands\DemoCommand;
+use RomanPiller\Console\Commands\SudokuCommand;
 use Symfony\Component\Console\Application as ConsoleApplication;
 
 /**
@@ -13,14 +13,9 @@ use Symfony\Component\Console\Application as ConsoleApplication;
  */
 final class Application extends ConsoleApplication
 {
-    /**
-     * Konstruktor registruje command
-     *
-     * @param DemoCommand $helloWorldCommand
-     */
-    public function __construct(private readonly DemoCommand $helloWorldCommand)
+    public function __construct(SudokuCommand $sudokuCommand)
     {
         parent::__construct();
-        $this->addCommand($this->helloWorldCommand);
+        $this->addCommand($sudokuCommand);
     }
 }

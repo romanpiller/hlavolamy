@@ -1,16 +1,13 @@
 parameters:
 
 services:
-    - Console\Application
+    - RomanPiller\Console\Application
 
-# commands
-    - Console\Commands\DemoCommand
+    # commands
+    - RomanPiller\Console\Commands\SudokuCommand
 
-# facades
-    - Console\Facades\DemoFacade
+    # facades
+    - RomanPiller\Console\Facades\SudokuFacade
 
 extensions:
-  demo: Demo\Config\Extension
-
-demo:
-  defaultName: 'console defaultname'
+  sudoku: RomanPiller\Sudoku\Config\Extension

@@ -1,6 +1,6 @@
 {
     "name": "romanpiller/console",
-    "description": "Console with Symfony",
+    "description": "Puzzle solving console.",
     "license": "MIT",
     "type": "project",
     "authors": [
@@ -11,30 +11,24 @@
     ],
     "autoload": {
         "psr-4": {
-            "Console\\": "app/"
+            "RomanPiller\\Console\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Console\\Tests\\": "tests/"
+            "RomanPiller\\Console\\Tests\\": "tests/"
         }
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/romanpiller/demo.git"
-        }
-    ],
     "require": {
         "php": "^8.2",
         "nette/di": "^3.2",
         "psr/log": "^3.0",
-        "romanpiller/demo":"^1.0.1",
+        "romanpiller/sudoku":"^1.0.1",
         "symfony/console": "^8.1"
     },
     "require-dev": {
         "nette/tester": "^2.4.3",
-        "phpstan/phpstan": "^1.9.18",
+        "phpstan/phpstan": "^2.0",
         "roave/security-advisories": "dev-latest",
         "shipmonk/composer-dependency-analyser": "^1.8",
         "squizlabs/php_codesniffer": "^3.7"
