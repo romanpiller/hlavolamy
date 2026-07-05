@@ -10,13 +10,11 @@ use \RomanPiller\Sudoku\Facades\SudokuFacade as SudokuPackageFacade;
  *
  * @author Roman Piller
  */
-final class SudokuFacade
+final readonly class SudokuFacade
 {
     public function __construct(private SudokuPackageFacade $sudokuFacade)
     {
-
     }
-
 
     /**
      * Solves the Sudoku.
