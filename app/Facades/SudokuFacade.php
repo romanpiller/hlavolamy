@@ -19,27 +19,27 @@ final readonly class SudokuFacade
     /**
      * Solves the Sudoku.
      *
-     * @param string      $inputFileName
-     * @param string      $inputDirectory
-     * @param bool        $stdOut
-     * @param string|null $outputFileName
-     * @param string|null $outputDirectory
+     * @param string      $puzzleFile
+     * @param string      $puzzlePath
+     * @param bool        $displayOutput
+     * @param string|null $solutionFile
+     * @param string|null $solutionPath
      * @return bool
      * @throws InvalidArgumentException
      */
     public function solve(
-        string $inputFileName,
-        string $inputDirectory,
-        bool $stdOut = false,
-        ?string $outputFileName = null,
-        ?string $outputDirectory = null
+        string $puzzleFile,
+        string $puzzlePath,
+        bool $displayOutput = false,
+        ?string $solutionFile = null,
+        ?string $solutionPath = null
     ): bool {
         return $this->sudokuFacade->solve(
-            $inputFileName,
-            $inputDirectory,
-            $stdOut,
-            $outputFileName,
-            $outputDirectory
+            $puzzleFile,
+            $puzzlePath,
+            $displayOutput,
+            $solutionFile,
+            $solutionPath
         );
     }
 }

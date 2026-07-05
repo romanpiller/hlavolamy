@@ -8,7 +8,7 @@ use Nette\DI\Extensions\ExtensionsExtension;
 
 require __DIR__.'/../vendor/autoload.php';
 
-// získanie kontajnera
+// obtain the container
 $loader = new ContainerLoader(__DIR__ . '/../temp', true);
 $class = $loader->load(function ($compiler) {
     $compiler->addExtension('extensions', new ExtensionsExtension());

@@ -20,7 +20,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 final class SudokuCommand extends Command
 {
     /**
-     * Konstructor.
+     * Constructor.
      *
      * @param SudokuFacade $sudokuFacade
      * @return void
@@ -41,11 +41,11 @@ final class SudokuCommand extends Command
         $this->setName('sudoku:solve')
             ->setDescription('Solve a Sudoku puzzle.')
             ->setHelp('This command solves a Sudoku puzzle.')
-            ->addArgument('inputFileName', InputArgument::REQUIRED, 'File name of the input file.', null)
-            ->addArgument('inputDirectory', InputArgument::REQUIRED, 'Directory of the input file.', null)
-            ->addOption('stdOut', '-o', InputOption::VALUE_OPTIONAL, 'Output to standard output.', false)
-            ->addArgument('outputFileName', InputArgument::OPTIONAL, 'File name of the output file.', null)
-            ->addArgument('outputDirectory', InputArgument::OPTIONAL, 'Directory of the output file.', null)
+            ->addArgument('puzzleFile', InputArgument::REQUIRED, 'File name of the puzzle file.', null)
+            ->addArgument('puzzlePath', InputArgument::REQUIRED, 'Directory path of the puzzle file.', null)
+            ->addOption('displayOutput', '-o', InputOption::VALUE_OPTIONAL, 'Output to standard output.', false)
+            ->addArgument('solutionFile', InputArgument::OPTIONAL, 'File name of the solution file.', null)
+            ->addArgument('solutionPath', InputArgument::OPTIONAL, 'Directory path of the solution file.', null)
         ;
     }
 
@@ -60,32 +60,32 @@ final class SudokuCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $inputFileName = $input->getArgument('inputFileName');
-        if (!is_string($inputFileName)) {
-            throw new ConsoleInvalidArgumentException('Argument inputFileName must be string.');
+        $puzzleFile = $input->getArgument('puzzleFile');
+        if (!is_string($puzzleFile)) {
+            throw new ConsoleInvalidArgumentException('Argument puzzleFile must be string.');
         }
 
-        $inputDirectory = $input->getArgument('inputDirectory');
-        if (!is_string($inputDirectory)) {
-            throw new ConsoleInvalidArgumentException('Argument inputDirectory must be string.');
+        $puzzlePath = $input->getArgument('puzzlePath');
+        if (!is_string($puzzlePath)) {
+            throw new ConsoleInvalidArgumentException('Argument puzzlePath must be string.');
         }
 
-        $outputFileName = $input->getArgument('outputFileName');
-        if ($outputFileName !== null && !is_string($outputFileName)) {
-            throw new ConsoleInvalidArgumentException('Argument outputFileName must be string or null.');
+        $solutionFile = $input->getArgument('solutionFile');
+        if ($solutionFile !== null && !is_string($solutionFile)) {
+            throw new ConsoleInvalidArgumentException('Argument solutionFile must be string or null.');
         }
 
-        $outputDirectory = $input->getArgument('outputDirectory');
-        if ($outputDirectory !== null && !is_string($outputDirectory)) {
-            throw new ConsoleInvalidArgumentException('Argument outputDirectory must be string or null.');
+        $solutionPath = $input->getArgument('solutionPath');
+        if ($solutionPath !== null && !is_string($solutionPath)) {
+            throw new ConsoleInvalidArgumentException('Argument solutionPath must be string or null.');
         }
 
         $this->sudokuFacade->solve(
-            $inputFileName,
-            $inputDirectory,
-            (bool) $input->getOption('stdOut'),
-            $outputFileName,
-            $outputDirectory
+            $puzzleFile,
+            $puzzlePath,
+            (bool) $input->getOption('displayOutput'),
+            $solutionFile,
+            $solutionPath
         );
         return Command::SUCCESS;
     }
