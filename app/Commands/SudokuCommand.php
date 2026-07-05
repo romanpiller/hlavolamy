@@ -4,7 +4,9 @@ namespace RomanPiller\Console\Commands;
 
 use RomanPiller\Console\Facades\SudokuFacade;
 
+use RomanPiller\Sudoku\Exceptions\InvalidArgumentException as SudokuInvalidArgumentException;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Exception\InvalidArgumentException as ConsoleInvalidArgumentException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
@@ -32,7 +34,7 @@ final class SudokuCommand extends Command
      * Configures the command.
      *
      * @return void
-     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function configure(): void
     {
@@ -53,29 +55,29 @@ final class SudokuCommand extends Command
      * @param InputInterface  $input
      * @param OutputInterface $output
      * @return int
-     * @throws \RomanPiller\Sudoku\Exceptions\InvalidArgumentException
-     * @throws \Symfony\Component\Console\Exception\InvalidArgumentException
+     * @throws SudokuInvalidArgumentException
+     * @throws ConsoleInvalidArgumentException
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $inputFileName = $input->getArgument('inputFileName');
         if (!is_string($inputFileName)) {
-            throw new \Symfony\Component\Console\Exception\InvalidArgumentException('Argument inputFileName must be string.');
+            throw new ConsoleInvalidArgumentException('Argument inputFileName must be string.');
         }
 
         $inputDirectory = $input->getArgument('inputDirectory');
         if (!is_string($inputDirectory)) {
-            throw new \Symfony\Component\Console\Exception\InvalidArgumentException('Argument inputDirectory must be string.');
+            throw new ConsoleInvalidArgumentException('Argument inputDirectory must be string.');
         }
 
         $outputFileName = $input->getArgument('outputFileName');
         if ($outputFileName !== null && !is_string($outputFileName)) {
-            throw new \Symfony\Component\Console\Exception\InvalidArgumentException('Argument outputFileName must be string or null.');
+            throw new ConsoleInvalidArgumentException('Argument outputFileName must be string or null.');
         }
 
         $outputDirectory = $input->getArgument('outputDirectory');
         if ($outputDirectory !== null && !is_string($outputDirectory)) {
-            throw new \Symfony\Component\Console\Exception\InvalidArgumentException('Argument outputDirectory must be string or null.');
+            throw new ConsoleInvalidArgumentException('Argument outputDirectory must be string or null.');
         }
 
         $this->sudokuFacade->solve(

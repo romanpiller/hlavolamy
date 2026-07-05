@@ -2,6 +2,7 @@
 
 namespace RomanPiller\Console\Facades;
 
+use RomanPiller\Sudoku\Exceptions\InvalidArgumentException;
 use \RomanPiller\Sudoku\Facades\SudokuFacade as SudokuPackageFacade;
 
 /**
@@ -26,7 +27,7 @@ final class SudokuFacade
      * @param string|null $outputFileName
      * @param string|null $outputDirectory
      * @return bool
-     * @throws \RomanPiller\Sudoku\Exceptions\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function solve(
         string $inputFileName,
