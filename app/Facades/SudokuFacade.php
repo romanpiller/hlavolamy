@@ -3,7 +3,7 @@
 namespace RomanPiller\Console\Facades;
 
 use RomanPiller\Sudoku\Exceptions\InvalidArgumentException;
-use \RomanPiller\Sudoku\Facades\SudokuFacade as SudokuPackageFacade;
+use RomanPiller\Sudoku\Facades\SudokuFacade as SudokuPackageFacade;
 
 /**
  * Class SudokuFacade
